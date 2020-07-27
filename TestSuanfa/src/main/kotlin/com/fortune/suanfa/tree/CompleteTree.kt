@@ -1,4 +1,4 @@
-package com.fortune.suanfa
+package com.fortune.suanfa.tree
 
 
 /**
@@ -11,7 +11,7 @@ package com.fortune.suanfa
  * 遍历完全二叉树
  *
  * @param tree 一颗完全二叉树
- * @param treeNode 使用节点在列表中的位置来表示树节点，注意是从1开始，
+ * @param treeNode 要遍历的树的节点，使用节点在列表中的位置来表示树节点，注意是从1开始，
  * @param traverseMethod 遍历方式1:前序遍历，2:中序遍历，3:后续遍历
  * @param visit 遍历方式
  *
@@ -33,7 +33,7 @@ fun <T> traverseTree(tree: Array<T>, treeNode: Int, traverseMethod: Int,  visit:
 
             // rightChild
             if (treeNode * 2  + 1 <= nodeCount) {
-                traverseTree(tree, treeNode  * 2 + 1, traverseMethod, visit)
+                traverseTree(tree, treeNode * 2 + 1, traverseMethod, visit)
             }
         }
         2-> {
@@ -49,7 +49,7 @@ fun <T> traverseTree(tree: Array<T>, treeNode: Int, traverseMethod: Int,  visit:
 
             // rightChild
             if (treeNode * 2  + 1 <= nodeCount) {
-                traverseTree(tree, treeNode  * 2 + 1, traverseMethod, visit)
+                traverseTree(tree, treeNode * 2 + 1, traverseMethod, visit)
             }
         }
         3-> {
@@ -62,7 +62,7 @@ fun <T> traverseTree(tree: Array<T>, treeNode: Int, traverseMethod: Int,  visit:
 
             // rightChild
             if (treeNode * 2  + 1 <= nodeCount) {
-                traverseTree(tree, treeNode  * 2 + 1, traverseMethod, visit)
+                traverseTree(tree, treeNode * 2 + 1, traverseMethod, visit)
             }
 
             visit(tree[treeNode - 1])

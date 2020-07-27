@@ -1,15 +1,51 @@
-package com.fortune.suanfa
+package com.fortune.suanfa.sort
+
+
+/**
+ * 插入排序
+ *
+ */
+fun insertSort() {
+
+}
+
+
+/**
+ * 冒泡排序
+ */
+fun popSort() {
+
+}
+
+/**
+ * 快速排序
+ *
+ *
+ */
+fun quickSort(list: IntArray) {
 
 
 
+}
 
 
+/**
+ * 选择排序
+ */
+fun selectSort() {
 
+}
 
 
 
 /**
  * 树选择排序
+ *
+ * 树选择排序的核心思想：
+ *
+ * 把待排序列表的元素作为完全二叉树的叶子节点，所有的非叶子节点为其左右子节点的较小值。
+ *
+ *
  *
  */
 fun treeSelectSort(list: IntArray) {
@@ -59,9 +95,7 @@ fun treeSelectSort(list: IntArray) {
         // 重新把树的最小值的叶子节点沉到根节点
         // 只需要从当前的节点开始，一直到根节点，比较兄弟节点，把较小的值给父节点
         while (minIndex > 0) {
-
             println("minIndex:$minIndex")
-
             // 注意求双亲节点的算法，如果index是从0开始，那么左右子树求父节点的算法是不一样的
 
             if (minIndex % 2 == 0) { // 当前节点为右子树
@@ -79,6 +113,24 @@ fun treeSelectSort(list: IntArray) {
 }
 
 
+/**
+ * 堆排序
+ */
+fun headSort() {
+
+}
+
+
+
+
+
+
+
+
+/**
+ * Test方法
+ *
+ */
 fun main(args: Array<String>) {
     val list = intArrayOf(10, 300, 2, 34, 450, 1)
     println("before:${list.asList()}")
