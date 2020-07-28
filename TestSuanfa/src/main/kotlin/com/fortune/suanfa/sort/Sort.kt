@@ -45,26 +45,38 @@ fun selectSort() {
  *
  * 把待排序列表的元素作为完全二叉树的叶子节点，所有的非叶子节点为其左右子节点的较小值。
  *
+ * 树选择排序是一种改进版的选择排序，算法的思路为把n个元素分成n/2组，两两比较，选出较小的n/2个元素，重复这个过程，最终得到一个最小的元素，这样就找到了一个最小元素。
  *
+ *
+ * @param list 待排序列表
  *
  */
 fun treeSelectSort(list: IntArray) {
 
     // 首先把列表作为叶子节点构建完全二叉树
 
-    // 完全二叉树的节点个数叶子节点
-    val treeLength = if (list.size % 2 == 0) { // 偶数，满二叉树
+    // 完全二叉树的节点= 叶子节点 * 2 - 1
+
+    val treeLength = if (list.size % 2 == 0) { // 列表
         list.size * 2 - 1
-    } else { // 奇数，完全二叉树
-        list.size * 2
+    } else { // 奇数的话
+        (list.size + 1) * 2 - 1
     }
 
 
     // 完全二叉树
     val tree = IntArray(treeLength)
 
+
     // 先填充叶子节点，把列表直接copy到tree列表到尾部即可
-    list.copyInto(tree, treeLength - list.size, 0, list.size)
+    if (list.size % 2 != 0) { // 如果不是偶数，需要在最后补一个最大值
+        list.copyInto(tree, treeLength - list.size - 1, 0, list.size)
+        tree[treeLength - 1] = Int.MAX_VALUE
+    } else {
+        list.copyInto(tree, treeLength - list.size, 0, list.size)
+    }
+
+
 
 
     //填充非叶子节点
@@ -132,7 +144,7 @@ fun headSort() {
  *
  */
 fun main(args: Array<String>) {
-    val list = intArrayOf(10, 300, 2, 34, 450, 1)
+    val list = intArrayOf(10, 300, 2, 34, 1)
     println("before:${list.asList()}")
     treeSelectSort(list)
     println("after:${list.asList()}")

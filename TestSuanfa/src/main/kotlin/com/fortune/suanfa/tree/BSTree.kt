@@ -1,6 +1,4 @@
-package com.fortune.suanfa.find
-
-import com.fortune.suanfa.tree.BinTreeNode
+package com.fortune.suanfa.tree
 
 
 /**
@@ -39,8 +37,10 @@ fun find(tree: BinTreeNode<Int>, key: Int): Int? {
  * 向二叉排序树插入节点
  *
  *
+ * @param tree
+ * @param data
  *
- * @return
+ * @return 返回创建好的二叉排序树
  */
 fun insertToBST(tree: BinTreeNode<Int>?, data: Int): BinTreeNode<Int> {
     if (tree == null) {
