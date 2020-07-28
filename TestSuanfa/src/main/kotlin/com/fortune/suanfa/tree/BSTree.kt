@@ -78,7 +78,7 @@ fun main(args: Array<String>) {
     }
 
 
-    tree?.traversel(1) {
+    tree?.traversal(1) {
         print("${it.data}, ")
     }
 

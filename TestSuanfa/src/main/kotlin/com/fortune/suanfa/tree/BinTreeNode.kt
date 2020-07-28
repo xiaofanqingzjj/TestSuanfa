@@ -4,6 +4,10 @@ package com.fortune.suanfa.tree
 
 /**
  * 二叉树节点对象和二叉树指针对象
+ *
+ * 以及一些二叉树常用的操作
+ *
+ * @author fortunexiao
  */
 class BinTreeNode<T> (var data: T,
                       var left: BinTreeNode<T>? = null,
@@ -46,21 +50,21 @@ class BinTreeNode<T> (var data: T,
      *
      * @param type 遍历类型：0先序遍历，1中序遍历，2后续遍历
      */
-    fun traversel(type: Int, visit: (node: BinTreeNode<T>) -> kotlin.Unit) {
+    fun traversal(type: Int, visit: (node: BinTreeNode<T>) -> kotlin.Unit) {
         when (type) {
             0-> {
                 visit(this)
-                left?.traversel(type, visit)
-                right?.traversel(type, visit)
+                left?.traversal(type, visit)
+                right?.traversal(type, visit)
             }
             1-> {
-                left?.traversel(type, visit)
+                left?.traversal(type, visit)
                 visit(this)
-                right?.traversel(type, visit)
+                right?.traversal(type, visit)
             }
             2-> {
-                left?.traversel(type, visit)
-                right?.traversel(type, visit)
+                left?.traversal(type, visit)
+                right?.traversal(type, visit)
                 visit(this)
             }
         }
@@ -89,6 +93,25 @@ class BinTreeNode<T> (var data: T,
     }
 
     /**
+     * 树的叶子节点个数
+     */
+    fun leafCount(): Int {
+        return leafCount(this)
+    }
+
+    /**
+     * 树的叶子节点个数
+     */
+    fun leafCount(tree: BinTreeNode<T>?): Int {
+        if (tree == null) return 0
+
+        if (tree.left == null && tree.right == null) {
+            return 1
+        }
+        return leafCount(tree.left) + leafCount(tree.right)
+    }
+
+    /**
      * 返回二叉树的深度
      */
     private fun depth(tree: BinTreeNode<T>?): Int {
@@ -111,8 +134,6 @@ class BinTreeNode<T> (var data: T,
         val tmp = tree.left
         tree.left = tree.right
         tree.right = tmp
-
-
     }
 
 
@@ -138,15 +159,17 @@ fun main(args: Array<String>) {
     val list = intArrayOf(2, 1, 5, 3, 4, 8)
     val tree = BinTreeNode.fromList(list)
 
-    tree?.traversel(1) {
+    tree?.traversal(1) {
         println("node:${it.data}")
     }
 
     println("tree node count:${tree?.nodeCount()}")
     println("tree depth :${tree?.depth()}")
+    println("tree leaCount :${tree?.leafCount()}")
+
 
     tree?.reverse()
-    tree?.traversel(0) {
+    tree?.traversal(0) {
         println("node:${it.data}")
     }
 
