@@ -10,5 +10,5 @@ fun main(args: Array<String>) {
 
     val tree: TreeNode
 
-//    val map: TreeMap
+//    val javadatastruct: TreeMap
 }
